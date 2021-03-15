@@ -10,7 +10,7 @@ const courseRouter = require("./routes/courses");
 const mediaRouter = require("./routes/media");
 const ordersRouter = require("./routes/orders");
 const paymentsRouter = require("./routes/payments");
-
+const mentorsRouter = require("./routes/mentors");
 const refreshTokensRouter = require("./routes/refreshTokens");
 const verifyToken = require("./middlewares/verifyToken");
 
@@ -26,8 +26,9 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/courses", verifyToken, courseRouter);
 app.use("/media", mediaRouter);
-app.use("./orders", ordersRouter);
+app.use("/orders", ordersRouter);
 app.use("/payments", paymentsRouter);
+app.use("/mentors", mentorsRouter);
 app.use("/refresh-tokens", refreshTokensRouter);
 
 module.exports = app;

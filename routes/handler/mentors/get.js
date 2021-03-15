@@ -1,14 +1,14 @@
 const apiAdapter = require("../../apiAdapter");
-const { URL_SERVICE_USER } = process.env;
-const api = apiAdapter(URL_SERVICE_USER);
+const { URL_SERVICE_COURSE } = process.env;
+const api = apiAdapter(URL_SERVICE_COURSE);
 
 module.exports = async (req, res) => {
   try {
-    const id = req.user.data.id;
-    const user = await api.get(`users/${id}`);
-    return res.json(user.data);
+    const id = req.params.id;
+    const mentor = await api.get(`/api/mentors/${id}`);
+    return res.json(mentor.data);
   } catch (error) {
-    if (error.code === "ECONNREFUSED") {
+    if (error.code == "ECONNREFUSED") {
       return res
         .status(500)
         .json({ status: "error", message: "service unavailable" });

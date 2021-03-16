@@ -4,13 +4,9 @@ const api = apiAdapter(URL_SERVICE_COURSE);
 
 module.exports = async (req, res) => {
   try {
-    const userId = req.user.data.id;
-    const courseId = req.body.course_id;
-    const myCourse = await api.post("/api/my-courses", {
-      user_id: userId,
-      course_id: courseId,
-    });
-    return res.json(myCourse.data);
+    const id = req.params.id;
+    const review = await api.delete(`/api/review/${id}`);
+    return res.json(review.data);
   } catch (error) {
     if (error.code === "ECONNREFUSED") {
       return res

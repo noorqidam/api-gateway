@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     const mentors = await api.get("/api/mentors");
     return res.json(mentors.data);
   } catch (error) {
-    if (error.code === "ENCONNFUSED") {
+    if (error.code === "ENCONNREFUSED") {
       return res
         .status(500)
         .json({ status: "error", message: "service unavailable" });

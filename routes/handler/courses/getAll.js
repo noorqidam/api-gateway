@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
         status: "published",
       },
     });
-    coursesData = courses.data;
+    const coursesData = courses.data;
     const firstPage = coursesData.data.first_page_url.split("?").pop();
     const lastPage = coursesData.data.last_page_url.split("?").pop();
 
